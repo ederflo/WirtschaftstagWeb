@@ -1,0 +1,19 @@
+version: '2'
+services:
+    springbootapp:
+        image: springbootappjpa
+        container_name: SpringBootApp
+        depends_on:
+          - mariadb
+        environment:
+          - SPRING_DATASOURCE_URL=jdbc:mysql://SpringBootJPADB:3306/db
+        ports:
+          - 8080:8080
+    mariadb:
+      image: mysql
+      container_name: SpringBootJPADB
+      environment:
+        - MYSQL_ROOT_PASSWORD=password
+        - MYSQL_DATABASE=db
+        - MYSQL_USER=usr
+        - MYSQL_PASSWORD=pwd
